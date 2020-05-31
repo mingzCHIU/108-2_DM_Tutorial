@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>RQDA</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="邱銘姿（生命所）、劉冠廷（教育所）" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="zh-CN.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# RQDA
+## 質性研究分析工具
+### 邱銘姿（生命所）、劉冠廷（教育所）
+### 108-2 Data Management
+### 2020/6/1
+
+---
+
+# RQDA
+
+--
+
+- 以 R package 形式安裝並在 R 中運行
+
+--
+
+- 質性研究資料分析 (e.g. 訪談整理、文本主題標記)
+
+--
+
+- 基本統計、大海挑針的搜索
+
+--
+
+- 分工
+
+--
+
+- 中文版可行，但蟲子很多
+
+
+---
+### 安裝 RQDA
+
+```yaml
+#Installing RQDA 
+Install.packages("RGtk2")
+Install.packages("RQDA", dependencies = TRUE)
+require(RQDA)
+RQDA() 
+```
+.footnote[
+*`dependencies = TRUE` will allow the installation of any other packages necessary to run RQDA.
+]
+
+--
+### 開啟
+
+```yaml
+#Re-opening RQDA in a different session 
+library(RQDA) 
+RQDA() 
+```
+---
+
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/1.png)
+background-size: 800px
+background-position: 50% 50%
+
+---
+
+background-image: url(https://im1.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/077/94/0010779455.jpg&amp;w=200)
+background-size: 400px
+background-position: 50% 20%
+
+class: center, bottom
+
+圖片來源：博客來
+
+**使用蔡孟利老師《死了一個研究生》的前三章，僅作為課堂報告範例使用。**
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/2.PNG)
+background-size: 400px
+background-position: 90% 30%
+
+### 匯入質性資料
+
+1. 建立 **New Project**
+
+1. 
+
+  - 匯入檔案  **File &gt; `Import`**
+
+  - 直接輸入 **File &gt; `新增`**
+  
+匯入資料單位可視為
+
+  - **不同個案訪談**
+
+  - **不同時間點的縱貫資料**
+  
+  - **不同文獻來源**
+  
+......等等
+
+.footnote[
+* 匯入檔案必須為 **`.txt`** 檔案，且編碼格式建議為 **ANSI**，** `.pdf`** 和 **word **檔案匯入後皆呈亂碼 
+]
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/3.PNG)
+background-size: 550px
+background-position: 90% 90%
+
+### 開啟、刪除、memo、rename
+
+**`開啟`**  開啟文本檔案
+
+**`刪除`**  從 project 的 file list 中刪除
+
+**`Memo`**  針對某個文本檔案加上註記
+
+**`rename`**  在 project 中重新命名文本檔案
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/4.PNG)
+background-size: 400px
+background-position: 90% 90%
+
+### 主題標籤 Code
+
+在 **`Codes` tab** 中 **加入** 欲分析的標籤
+
+***經測試，中英文皆可，但輸入時有時無法輸入中文，可用記事本內文字複製貼上方式製作中文標籤**
+
+--
+
+點選一個 code 可以
+
+  - **刪除**
+  
+  - **rename** 重新命名
+  
+  - **Coding** 瀏覽該標籤下的文字
+  
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/5.PNG)
+background-size: 550px
+background-position: 90% 90%
+
+### Mark
+
+1. 開啟欲分析的文本檔案 **`File` tab**
+
+1. 主畫面切換到 **`Codes` tab**，選取欲標記的標籤
+
+1. 反白欲標記的文字，點選 **`Codes`** 頁面的 **`Mark`**
+
+- 同一組文句可標記不只一個標籤
+
+--
+
+### Unmark
+
+1. 反白取消標記的文句
+
+1. 點選 **`Unmark`**
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/6.PNG)
+background-size: 500px
+background-position: 90% 90%
+
+### Case
+
+同一個 project 裡創立不同分類 (e.g. 不同分析者、受試者、文本類型等等)
+
+--
+
+**`Case` tab** &gt; **加入** &gt; 名稱輸入 &gt; 右鍵 &gt; **`Add File(s)`**  &gt; 選取欲歸類的檔案 &gt; **確定**
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/7.PNG)
+background-size: 300px
+background-position: 90% 50%
+
+### Attributes 屬性
+
+- 標記個案 (file) 的屬性
+
+- 1. **`Attributes` tab** &gt; 創建 variable
+
+  1. 在 memo 裡註記各個數字編號代表的 levels
+  
+  1. **`Class`** &gt; Numeric or character
+  
+  1. 在 **`Attributes` tab** 頁面選取標屬性
+  
+  1. **`File` tab** &gt; 選定 file &gt; 點選 **`Attribute`**
+  
+  1. 輸入 variable 的 value (根據 memo 的設定)
+  
+.footnote[
+*詳細教學可參考[這裡](https://www.youtube.com/watch?v=FJi5Vp3NL94)
+]
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/8.PNG)
+background-size: 550px
+background-position: 90% 70%
+
+### summaryCodings()
+
+- 在 R 視窗中使用特定 functions 可協助彙整或搜尋
+
+```yaml
+summaryCodings()
+```
+可用來表列所有標籤紀錄
+
+.footnote[**因無法以 R Markdown 顯示，以 R 頁面截圖呈現**]
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/9.png)
+background-size: 500px
+background-position: 98% 70%
+
+### getCodingTable() 
+
+所有標籤列表
+
+```yaml
+getCodingTable()
+```
+
+`rowid`: 本表列數
+
+`cid`: **code ID**
+
+`fid`: file ID
+
+`index1`: 內容所在起點列
+
+`index2`: 內容所在終點列
+
+`CodingLength`: 所標記內容列數
+
+.footnote[
+***參考文獻裡 `cid` 寫錯成 case ID** 
+]
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/10.PNG)
+background-size: 350px
+background-position: 90% 80%
+
+### codingByOne()
+
+```yaml
+getCodingSByOne(cid=1, fid=1, codingTable=c("coding"))
+```
+在特並檔案中搜尋特定 coding 所標記的內容
+
+*RQDA 視窗彈出
+
+---
+background-image: url(https://raw.githubusercontent.com/mingzCHIU/108-2_DM_Tutorial/figure/11.JPG)
+background-size: 350px
+background-position: 95% 90%
+
+### Plot of Categories
+
+使用 **`Code Catagories`** 可以畫出 codes 之間的關係圖
+
+1. **`Codes Catagories` tab** &gt; **加入** 標籤類別
+
+1. **`Add to`** 可將 code 加入類別；**`Drop from`** 可移出
+
+1. **Ctrl+A** 全選所有類別 &gt; 空白處按右鍵 &gt; **`Plot Selected Code Catagories`**
+
+1. RQDA 跳出獨立視窗呈現關係圖
+
+- 每個 vector 和 edge 都可變換顏色與大小/粗細
+
+---
+### Conclusion: 蟲子滿天飛的工具
+
+經過測試，RQDA 可能存在以下問題 (儘管聲稱沒有問題)：
+
+1. 並非所有電腦的 R 都能成功安裝使用，尤其 Mac
+
+1. 雖可以應用於中文文本，但些許功能無法順利使用 ***英文版的成功範例為老師所提供之參考文獻**
+
+1. 若文本檔案中有錯字 (如本次示範)，儘管有在 project 中修改檔案內容的功能，但不能直接騰打中文字，測試結果是無法儲存
+
+1. 當時看到功能中有 **Saving the Project to HTML**覺得很厲害，但本組僅一名組員的唯一一台能夠跑 RQDA 的電腦無法成功跑出這個結果
+
+  ```yaml
+  exportCodedFile("fileExport.html", fid=getFileIds(), closeAfter=TRUE)
+  ```
+  ```yaml
+  exportCodings(file="coding_in_book", fid=1, order="fname", append=FALSE, codingTable="coding")
+  ```
+
+1. 創始者為一黃姓中國人，提供中文說明範例中原始 project，內涵所有簡體中文文本檔案，跑不出來的還是跑不出來
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
